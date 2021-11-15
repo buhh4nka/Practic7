@@ -1,0 +1,48 @@
+﻿<Window x:Class="Practic5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practic5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="227" Width="391">
+    <Grid>
+        <Menu VerticalAlignment="Top" Height="18">
+            <MenuItem HorizontalAlignment="Center" Height="18" Width="73" Header="Программа">
+                <MenuItem x:Name="help" Header="О программе" Click="help_Click"></MenuItem>
+                <MenuItem x:Name="exit" Header="Выход" Click="exit_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <GroupBox Header="Второй кошелёк" Margin="136,23,0,0" Height="126" VerticalAlignment="Top" HorizontalAlignment="Left" Width="109">
+            <Grid>
+                <TextBox x:Name="secondPairFirstNumber" HorizontalAlignment="Left" Margin="6,23,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+                <TextBox x:Name="secondPairSecondNumber" HorizontalAlignment="Left" Margin="6,74,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+                <TextBlock HorizontalAlignment="Left" Margin="6,7,0,0" Text="Рубли:" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" TextAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Margin="6,58,0,0" Text="Копейки:" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" Height="16" RenderTransformOrigin="0.409,0.546" TextAlignment="Center"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Первый кошелёк" Margin="10,23,0,0" Height="126" VerticalAlignment="Top" HorizontalAlignment="Left" Width="112">
+            <Grid>
+                <TextBox x:Name="firstPairFirstNumber" HorizontalAlignment="Left" Margin="6,27,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+                <TextBox x:Name="firstPairSecondNumber" HorizontalAlignment="Left" Margin="6,72,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+                <TextBlock HorizontalAlignment="Left" Margin="6,11,0,0" Text="Рубли:" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" TextAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Margin="6,56,0,0" Text="Копейки:" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" TextAlignment="Center"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Действия" Margin="257,23,0,0" Height="162" VerticalAlignment="Top" HorizontalAlignment="Left" Width="109">
+            <Grid>
+                <TextBox x:Name="endSum" HorizontalAlignment="Center" Margin="0,22,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsReadOnly="True"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"><Run Language="ru-ru" Text="Сумма денег:"/></TextBlock>
+                <Button x:Name="startSum" Content="Рассчитать" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Width="97" Click="startSum_Click"/>
+                <Button x:Name="addNumber" Content="Увеличить на Х" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Width="97" Click="addNumber_Click"/>
+                <TextBox x:Name="numberToAdd" HorizontalAlignment="Center" Margin="0,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" Text="Введите Х" TextAlignment="Center"/>
+
+            </Grid>
+        </GroupBox>
+
+
+    </Grid>
+</Window>
