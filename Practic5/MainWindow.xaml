@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practic5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="227" Width="391">
+        Title="MainWindow" Height="245" Width="391">
     <Grid>
         <Menu VerticalAlignment="Top" Height="18">
             <MenuItem HorizontalAlignment="Center" Height="18" Width="73" Header="Программа">
@@ -31,14 +31,15 @@
 
             </Grid>
         </GroupBox>
-        <GroupBox Header="Действия" Margin="257,23,0,0" Height="162" VerticalAlignment="Top" HorizontalAlignment="Left" Width="109">
+        <GroupBox Header="Действия" Margin="257,0,0,0" Height="183" VerticalAlignment="Center" HorizontalAlignment="Left" Width="109">
             <Grid>
                 <TextBox x:Name="endSum" HorizontalAlignment="Center" Margin="0,22,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" IsReadOnly="True"/>
-                <TextBlock HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"><Run Language="ru-ru" Text="Сумма денег:"/></TextBlock>
-                <Button x:Name="startSum" Content="Рассчитать" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Width="97" Click="startSum_Click"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"><Run Text=" "/><Run Language="ru-ru" Text="Итого "/><Run Text="денег:"/></TextBlock>
+                <Button x:Name="startSum" Content="Сложить деньги" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Width="97" Click="startSum_Click"/>
                 <Button x:Name="addNumber" Content="Увеличить на Х" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Width="97" Click="addNumber_Click"/>
                 <TextBox x:Name="numberToAdd" HorizontalAlignment="Center" Margin="0,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
                 <TextBlock HorizontalAlignment="Center" Margin="0,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" Text="Введите Х" TextAlignment="Center"/>
+                <Button x:Name="divisionNumber" Content="Поделить на Х" HorizontalAlignment="Center" Margin="0,137,0,0" VerticalAlignment="Top" Width="97" Click="divisionNumber_Click"/>
 
             </Grid>
         </GroupBox>

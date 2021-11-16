@@ -85,6 +85,24 @@ namespace Practic5
             }
             return money;
         }
-
+        public Money Division(ref Money firstMoney, Money secondMoney)
+        {
+            double firstNumber = firstMoney.First + ((double)firstMoney.Second / 100);
+            double secondNumber = secondMoney.First + ((double)secondMoney.Second / 100);
+            firstMoney = new Money(firstNumber / secondNumber);
+            return firstMoney;
+        }
+        public Money Division(ref Money money, int number)
+        {
+            double sumNumber = (double)money.First + ((double)money.Second / 100);
+            money = new Money(sumNumber /(double)number);
+            return money;
+        }
+        public Money Division(ref Money money, double number)
+        {
+            double sumNumber = money.First + (money.Second / 100);
+            money = new Money(sumNumber / number);
+            return money;
+        }
     }
 }

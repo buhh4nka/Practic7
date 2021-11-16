@@ -21,8 +21,9 @@ namespace Practic5
 
     public partial class MainWindow : Window
     {
-        Pair _firstPair = new Pair();
-        Pair _secondPair = new Pair();
+        Money _firstMoney = new Money();
+        Money _secondMoney = new Money();
+        Money _endMoney = new Money();
 
         public MainWindow()
         {
@@ -31,7 +32,7 @@ namespace Practic5
 
         private void help_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ИСП-31. Назаров Д. Вариант 2. \nСоздать класс Pair (пара чисел). Создать необходимые методы и свойства. Определить методы метод сложения полей и операцию сложения пар(а, b) + (с, d)= (а + c, b + d).\nСоздать перегруженные методы для увеличения полей на 1, сложения трех пар чисел.", "О программе");
+            MessageBox.Show("ИСП-31. Назаров Д. Вариант 2. \nИспользовать класс Pair (пара чисел). Определить класс-наследник Money с полями: рубли и копейки. Переопределить операцию сложения и определить методы вычитания и деления денежных сумм.", "О программе");
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
@@ -41,19 +42,19 @@ namespace Practic5
 
         private void startSum_Click(object sender, RoutedEventArgs e)
         {
-            bool isNotErrorInFirstPair1 = Int32.TryParse(firstPairFirstNumber.Text, out int firstNumberPair1);
-            bool isNotErrorInSecondPair1 = Int32.TryParse(firstPairSecondNumber.Text, out int secondNumberPair1);
-            bool isNotErrorInFirstPair2 = Int32.TryParse(secondPairFirstNumber.Text, out int firstNumberPair2);
-            bool isNotErrorInSecondPair2 = Int32.TryParse(secondPairSecondNumber.Text, out int secondNumberPair2);
+            bool isNotErrorInFirstPair1 = Int32.TryParse(firstPairFirstNumber.Text, out int firstMoneyRuble);
+            bool isNotErrorInSecondPair1 = Int32.TryParse(firstPairSecondNumber.Text, out int firstMoneyKopeck);
+            bool isNotErrorInFirstPair2 = Int32.TryParse(secondPairFirstNumber.Text, out int secondMoneyRuble);
+            bool isNotErrorInSecondPair2 = Int32.TryParse(secondPairSecondNumber.Text, out int secondMoneyKopeck);
             if (isNotErrorInFirstPair1 && isNotErrorInFirstPair2 && isNotErrorInSecondPair1 && isNotErrorInSecondPair2)
             {
-                _firstPair.First = firstNumberPair1;
-                _firstPair.Second = secondNumberPair1;
-                _secondPair.First = firstNumberPair2;
-                _secondPair.Second = secondNumberPair2;
-                Pair endPair = new Pair();
-                endPair = _firstPair + _secondPair;
-                endSum.Text = $"{endPair.First}, {endPair.Second}";
+                _firstMoney.First = firstMoneyRuble;
+                _firstMoney.Second = firstMoneyKopeck;
+                _secondMoney.First = secondMoneyRuble;
+                _secondMoney.Second = secondMoneyKopeck;
+                _endMoney = _firstMoney + _secondMoney;
+                if(_endMoney.Second > 9) endSum.Text = $"{_endMoney.First},{_endMoney.Second}";
+                else endSum.Text = $"{_endMoney.First},0{_endMoney.Second}";
             }
             else
             {
@@ -71,12 +72,21 @@ namespace Practic5
             bool isNotErrorInNumber = double.TryParse(numberToAdd.Text, out double number);
             if (isNotErrorInNumber)
             {
-                Money endMoney = new Money(number);
-                if (endMoney.Second < 10) endSum.Text = $"{endMoney.First}, 0{endMoney.Second}";
-                else endSum.Text = $"{endMoney.First}, {endMoney.Second}";
-
-
-
+                Money addMoney;
+                if (number >= 0)
+                {
+                    addMoney = new Money(number);
+                    _endMoney = _endMoney + addMoney;
+                    if (_endMoney.Second < 10) endSum.Text = $"{_endMoney.First},0{_endMoney.Second}";
+                    else endSum.Text = $"{_endMoney.First},{_endMoney.Second}";
+                }
+                else
+                {
+                    addMoney = new Money(Math.Abs(number));
+                    _endMoney.Minus(ref _endMoney, addMoney.First, addMoney.Second);
+                    if (_endMoney.Second < 10) endSum.Text = $"{_endMoney.First},0{_endMoney.Second}";
+                    else endSum.Text = $"{_endMoney.First},{_endMoney.Second}";
+                }
             }
             else
             {
@@ -85,6 +95,21 @@ namespace Practic5
             }
         }
 
+        private void divisionNumber_Click(object sender, RoutedEventArgs e)
+        {
+            bool isNotErrorInNumber = double.TryParse(numberToAdd.Text, out double number);
+            if (isNotErrorInNumber)
+            {
+                _endMoney.Division(ref _endMoney, number);
+                if (_endMoney.Second < 10) endSum.Text = $"{_endMoney.First},0{_endMoney.Second}";
+                else endSum.Text = $"{_endMoney.First},{_endMoney.Second}";
+            }
+            else
+            {
+                MessageBox.Show("Введены некоректные значения, введите другие", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                numberToAdd.Clear();
+            }
+        }
 
     }
 }
